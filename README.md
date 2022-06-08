@@ -24,15 +24,16 @@ CREATE TABLE airquality.reading (readingID TEXT,
    state_code TEXT,
    reporting_area TEXT,
    hour_observed INT,
-   date_observed TEXT
+   date_observed TEXT,
    latitude FLOAT,
    longitude FLOAT,
 PRIMARY KEY (readingID));
 
 INSERT INTO airquality.reading (readingID, 
- avg_ozone ,    min_ozone ,    max_ozone ,    avg_pm10 ,    min_pm10 ,    max_pm10 ,    avg_pm25 ,    min_pm25 ,    max_pm25 ,   local_time_zone ,   state_code ,   reporting_area ,   hour_observed ,date_observed,   latitude ,longitude) 
+ avg_ozone ,min_ozone ,max_ozone ,avg_pm10 ,min_pm10 ,max_pm10 ,avg_pm25 ,min_pm25 ,max_pm25 ,local_time_zone ,state_code ,reporting_area ,   hour_observed ,date_observed,latitude ,longitude) 
  VALUES ('TEST',20,19,21,15,14,16,25,20,30,'EST','NJ', 'Newark', 10,'2022-06-08',37.48,-122.22);
 
+select * from airquality.reading;
 
 ````
 
