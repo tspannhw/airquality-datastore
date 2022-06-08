@@ -35,6 +35,8 @@ INSERT INTO airquality.reading (readingID,
 
 select * from airquality.reading;
 
+desc airquality.reading;
+
 ````
 
 ### Example JSON Data
