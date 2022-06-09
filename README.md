@@ -56,7 +56,9 @@ bin/pulsar-admin sink stop --name scylla-airquality-sink --namespace default --t
 
 bin/pulsar-admin sinks delete --tenant public --namespace default --name scylla-airquality-sink
 
-bin/pulsar-admin sinks create --tenant public --namespace default --name "scylla-airquality-sink" --sink-type cassandra --sink-config-file conf/scyllaairquality.yml --inputs aq-ozone, aq-pm10, aq-pm25
+bin/pulsar-admin sinks create --tenant public --namespace default --name "scylla-airquality-sink" --sink-type cassandra --sink-config-file conf/scyllaairquality.yml --inputs aq-ozone,aq-pm10,aq-pm25
+
+bin/pulsar-admin sinks status --tenant public --namespace default --name scylla-airquality-sink
 
 ````
 
