@@ -52,4 +52,5 @@ key:[45f12e82-326b-41de-8ea6-322cb00826a8], properties:[], content:{"dateObserve
 
 * https://github.com/tspannhw/ScyllaFLiPSTheStream
 * https://medium.com/@aamine/spring-data-for-cassandra-a-complete-example-3c6f7f39fef9
+* https://dzone.com/articles/getting-started-with-spring-data-cassandra
 
