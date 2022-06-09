@@ -10,6 +10,8 @@ AirQuality DataStore - ScyllaDB
 
 CREATE KEYSPACE IF NOT EXISTS airquality WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
+CREATE TABLE airquality.observation (key text PRIMARY KEY, observed text);
+ 
 CREATE TABLE airquality.reading (readingID TEXT,
    avg_ozone DOUBLE, 
    min_ozone DOUBLE, 
@@ -56,7 +58,19 @@ bin/pulsar-admin sinks delete --tenant public --namespace default --name scylla-
 
 bin/pulsar-admin sinks create --tenant public --namespace default --name "scylla-airquality-sink" --sink-type cassandra --sink-config-file conf/scyllaairquality.yml --inputs aq-ozone, aq-pm10, aq-pm25
 
+````
 
+### Sink Configuration
+
+````
+
+configs:
+    roots: "172.17.0.2:9042"
+    keyspace: "airquality"
+    columnFamily: "observation"
+    keyname: "key"
+    columnName: "observed"
+    
 ````
 
 ### Example JSON Data
