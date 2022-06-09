@@ -27,7 +27,7 @@ CREATE TABLE airquality.reading (readingID TEXT,
    date_observed TEXT,
    latitude FLOAT,
    longitude FLOAT,
-PRIMARY KEY (readingID));
+PRIMARY KEY (reporting_area));
 
 INSERT INTO airquality.reading (readingID, 
  avg_ozone ,min_ozone ,max_ozone ,avg_pm10 ,min_pm10 ,max_pm10 ,avg_pm25 ,min_pm25 ,max_pm25 ,local_time_zone ,state_code ,reporting_area ,   hour_observed ,date_observed,latitude ,longitude) 
@@ -36,6 +36,26 @@ INSERT INTO airquality.reading (readingID,
 select * from airquality.reading;
 
 desc airquality.reading;
+
+````
+
+### ScyllaDB Setup
+
+````
+sudo systemctl start docker
+docker run -p 9042:9042 --name devscylla --hostname devscylla -d scylladb/scylla --smp 1
+docker container restart devscylla
+docker ps
+docker logs devscylla  | tail
+docker exec -it devscylla nodetool status
+docker exec -it devscylla cqlsh
+
+bin/pulsar-admin sink stop --name scylla-airquality-sink --namespace default --tenant public
+
+bin/pulsar-admin sinks delete --tenant public --namespace default --name scylla-airquality-sink
+
+bin/pulsar-admin sinks create --tenant public --namespace default --name "scylla-airquality-sink" --sink-type cassandra --sink-config-file conf/scyllaairquality.yml --inputs aq-ozone, aq-pm10, aq-pm25
+
 
 ````
 
