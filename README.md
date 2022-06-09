@@ -39,6 +39,10 @@ select * from airquality.reading;
 
 desc airquality.reading;
 
+desc airquality.observation;
+
+select * from airquality.observation;
+
 ````
 
 ### ScyllaDB Setup
