@@ -7,7 +7,6 @@ AirQuality DataStore - ScyllaDB
 
 ````
 
-
 CREATE KEYSPACE IF NOT EXISTS airquality WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
 CREATE TABLE airquality.observation (key text PRIMARY KEY, observed text);
@@ -64,6 +63,12 @@ bin/pulsar-admin sinks create --tenant public --namespace default --name "scylla
 
 bin/pulsar-admin sinks status --tenant public --namespace default --name scylla-airquality-sink
 
+````
+
+### ScyllaDB Cloud Connect
+
+````
+cqlsh -u scylla -p aPasswordThatIsLong 1.2.3.4
 ````
 
 ### Sink Configuration
